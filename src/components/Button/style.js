@@ -10,7 +10,7 @@ export const Container = styled.button`
     padding: 0 1.6rem;
     margin-top: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_RED};
-    color: ${({ theme }) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.BLACK};
     
 
     &:disabled {

@@ -29,8 +29,10 @@ export const Container = styled.button`
         color: ${({ theme }) => theme.COLORS.WHITE};
     }
 
-    > div > svg {
+    > svg {
         color:  ${({ theme }) => theme.COLORS.DARK_RED};
+        background: none;
+        border: none;
     }
 
 

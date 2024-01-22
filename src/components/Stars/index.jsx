@@ -1,10 +1,8 @@
 import { Container } from "./style";
 
-
-export function ButtonText({children, title, ...rest}) {
+export function Stars({ children,  ...rest}) {
     return (
         <Container type="button"  {...rest}>
-            {title}
             {children}
         </Container>
     )

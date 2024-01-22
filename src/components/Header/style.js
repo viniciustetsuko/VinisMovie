@@ -9,11 +9,17 @@ export const Container = styled.header`
     padding: 3rem .8rem;
     border-bottom: 2px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
     
-
-    > h1 {
+    > button { 
+        background: none;
+        border: none;
+        
+        > h1 {
         color: ${({ theme }) => theme.COLORS.DARK_RED};
         font-size: 2.4rem; 
     }
+    }
+
+    
 
 `;
 

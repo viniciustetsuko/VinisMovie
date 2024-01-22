@@ -1,28 +1,31 @@
 import { Container } from "./style";
 import { Tags } from "../../components/Tags";
 import { FaStar } from "react-icons/fa";
+import { Stars } from "../Stars";
+import { useEffect, useState } from 'react'
+
 
 export function Movie({ data, ...rest }) {
+  const [rating, setRating] = useState([]);
+
+  useEffect(() =>{
+      setRating([...Array(data.rating ?? 1).keys()]);
+  }, []);
+
   return (
     <Container {...rest}>
       <h1>{data.title}</h1>
 
-      <div>
-        <FaStar />
-        <FaStar />
-        <FaStar />
-        <FaStar />
-        <FaStar />
-      </div>
+    <Stars>
+      {
+        rating && rating.map((index) => (
+          <FaStar key={String(index)}/>
+        ))   
+      }
+      </Stars>
       
-      <p>
-        Um garoto de 12 anos chamado Dre Parker se muda para a China com a mãe e
-        se vê em um terra estranha. Ele sabe um pouco de caratê, mas suas
-        habilidades não são o bastante para enfrentar o valentão da escola,
-        Cheng. Dre faz amizade com o Sr. Han, um mestre das artes marciais, que
-        lhe ensina os segredos do kung fu na esperança de que o garoto possa
-        derrotar Cheng e, quem sabe, conquistar o coração da linda Mei Ying.
-      </p>
+      <p>{data.description}</p>
+
       {data.tags && (
         <footer>
           {data.tags.map((tag) => (

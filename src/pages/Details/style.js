@@ -22,13 +22,15 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  a {
+  > button {
     font-size: 1.6rem;
     color: ${({ theme }) => theme.COLORS.DARK_RED};
     display: flex;
     align-items: center;
     gap: 0.8rem;
     margin-bottom: 2.4rem;
+    background: none;
+    border: none;
   }
 
   > h1 {
@@ -44,6 +46,7 @@ export const Content = styled.div`
 
     > svg {
       color: ${({ theme }) => theme.COLORS.DARK_RED};
+      font-size: 2.6rem;
     }
    
   }
@@ -58,8 +61,8 @@ export const Content = styled.div`
 
 export const Avatar = styled.div`
    img {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 50%;
     margin: 4rem 0;
   }

@@ -12,6 +12,7 @@ export const Container = styled.div`
     > main {
         grid-area: content;
         overflow-y: auto;
+        padding-right: 1rem;
     }
 
     .tags {
@@ -37,12 +38,14 @@ export const Form = styled.form`
         margin-bottom: 3.6rem;
         gap: 2.4rem;
 
-        a {
+         a {
             font-size: 1.6rem;
             color: ${({ theme }) => theme.COLORS.DARK_RED};
             display: flex;
             align-items: center;
             gap: .8rem;
+            background: none;
+            border: none;
         }
     }
     
@@ -62,6 +65,7 @@ export const Form = styled.form`
     button:first-child {
     
         background-color: ${({ theme }) => theme.COLORS.BLACK};
+        color: ${({ theme }) => theme.COLORS.WHITE};
   }    
 
 

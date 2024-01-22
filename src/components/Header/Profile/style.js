@@ -22,10 +22,13 @@ export const ContainerP = styled(Link)`
       color: ${({ theme }) => theme.COLORS.WHITE};
     }
 
-    span {
+    button {
       font-size: 1.4rem;
+      font-size: bold;
       color: ${({ theme }) => theme.COLORS.GRAY_100};
       text-align: right;
+      background: none;
+      border: none;
     }
   }
 `;

@@ -3,8 +3,29 @@ import { Content, Div, NewMovie } from './style'
 import { Section } from '../../components/Section'
 import { Movie } from '../../components/Movie'
 import { Header } from '../../components/Header'
+import { useEffect, useState } from 'react'
+import { api } from "../../service/api";
+import { useAuth } from '../../hooks/auth';
+import { useNavigate } from 'react-router-dom'
 
 export function Home() {
+    const { filtro  } = useAuth();
+    const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
+
+    function handleDetails(id) {
+        navigate(`/details/${id}`);
+    }
+
+    useEffect(() => {
+        async function fetchMovies() {
+            const response = await api.get(`/movies?title=${filtro}`);
+            setMovies(response.data);
+        }
+
+        fetchMovies();
+    }, [filtro])
+   
     return (
         <Content>
             <Header/>
@@ -17,41 +38,16 @@ export function Home() {
                     </NewMovie>
                 </Div>
                 
-                <Movie data={{
-                    title: "Naruto Shipuden Prison Bloody",
-                    tags: [
-                        {id: '1', name: 'ação' },
-                        {id: '2', name: 'anime' },
-                        {id: '3', name: 'luta' }
-                    ]
-
-                }}/>
-                <Movie data={{
-                    title: "Jhon Wick The baba Yaga",
-                    tags: [
-                        {id: '1', name: 'ação' },
-                        {id: '2', name: 'suspense' },
-                        {id: '3', name: 'luta' }
-                    ]
-
-                }}/>
-                <Movie data={{
-                    title: "Karate kid",
-                    tags: [
-                        {id: '1', name: 'ação' },
-                        {id: '2', name: 'drama' },
-                        {id: '3', name: 'luta' }
-                    ]
-                }}/>
-
-                <Movie data={{
-                    title: "Kung fu Panda",
-                    tags: [
-                        {id: '1', name: 'ação' },
-                        {id: '2', name: 'drama' },
-                        {id: '3', name: 'luta' }
-                    ]
-                }}/>
+                {
+                        movies.map(movie => (
+                              <Movie
+                                data={movie}
+                                key={String(movie.id)}
+                                onClick={() => handleDetails(movie.id)}
+                              />  
+                        ))
+                    
+                }
             </Section>
         </Content>
     )
